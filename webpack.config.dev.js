@@ -5,17 +5,18 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'development', // development production
+  mode: 'development',
   entry: './src/index.jsx',
   output: {
     filename: 'js/[name].bundle.js',
-    chunkFilename: 'js/[name].[hash:6].js',
-    path: path.resolve(__dirname, 'dist')
+    chunkFilename: 'js/[name].[chunkhash:6].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /\.(jsx?|es6)$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },
@@ -72,7 +73,7 @@ module.exports = {
 
   devServer: {
     open: true,
-    port: '8035',
+    port: '8022',
     https: false,
     publicPath: '/',
     contentBase: path.resolve(__dirname, 'dist'),
@@ -87,7 +88,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      title: 'step-abc',
+      title: 'step-integrate',
       favicon: __dirname + '/favicon.ico',
       template: __dirname + '/index.html'
     }),
