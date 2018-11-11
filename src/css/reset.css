@@ -18,7 +18,7 @@
 html, body {
   margin: 0;
   padding: 30px;
-  background: rgb(66, 138, 172) !important;
+  background: rgba(13, 48, 65, 0.7) !important;
 }
 
 ul {

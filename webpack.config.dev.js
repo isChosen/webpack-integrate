@@ -13,6 +13,16 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '-'
+    }
+  },
+
   module: {
     rules: [
       {
@@ -20,7 +30,17 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader'
       },
-      // 第三方模块的 css 不需要模块化
+      /* node_modules 引入的样式不需要模块化 */
+      {
+        test: /\.css$/,
+        include: [path.resolve(__dirname, 'node_modules')],
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
+      },
+      /* 非 node_modules 样式模块化 */
       {
         test: /\.css$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
@@ -77,7 +97,8 @@ module.exports = {
     https: false,
     publicPath: '/',
     contentBase: path.resolve(__dirname, 'dist'),
-    host: 'localhost'
+    host: 'localhost',
+    historyApiFallback: true
   },
 
   resolve: {
@@ -94,7 +115,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash:6].css',
-      chunkFilename: 'css/[id]hash[chunkhash:6].css'
+      chunkFilename: 'css/[id]hash[chunkhash:6].css' // 供应商(vendor)样式文件
     }),
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([
@@ -108,6 +129,11 @@ module.exports = {
         to: 'css/[name].[ext]',
         type: 'template'
       },
+      {
+        from: 'src/images/outer/',
+        to: 'images/outer/[name].[ext]',
+        type: 'template'
+      }
 
     ])
   ]

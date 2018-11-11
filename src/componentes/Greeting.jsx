@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import greetingLess from '../less/greeting.less';
 import girl from '../images/girl.png';
 import avator from '../images/avatar.jpg';
+import greetingLess from '../less/greeting.less';
+import 'weui/dist/style/weui.css'; // vendor 样式
 
 class Greeting extends Component {
   handleBtnClick(ev) {
@@ -13,6 +14,7 @@ class Greeting extends Component {
     return (
       <div>
         <h3 className={greetingLess.title}>Hello React!</h3>
+        <a className='weui-btn weui-btn_primary' style={{maxWidth: '300px'}}>页面主操作 Normal</a>
         <div className={greetingLess.girlBox}>
           <img src={girl}/>
         </div>
