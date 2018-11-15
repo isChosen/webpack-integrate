@@ -6,10 +6,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.jsx',
+  entry: './src/componentes/index.jsx',
   output: {
-    filename: 'js/[name].bundle.js',
-    chunkFilename: 'js/[name].[chunkhash:6].js',
+    filename: 'js/[name].bundle[contenthash:6].js',
+    chunkFilename: 'js/[name][chunkhash:6].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
   },
@@ -114,8 +114,8 @@ module.exports = {
       template: __dirname + '/index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash:6].css',
-      chunkFilename: 'css/[id]hash[chunkhash:6].css' // 供应商(vendor)样式文件
+      filename: 'css/[name][contenthash:6].css',
+      chunkFilename: 'css/[id][contenthash:6].css' // 供应商(vendor)样式文件
     }),
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([
