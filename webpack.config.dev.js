@@ -8,7 +8,7 @@ module.exports = {
   mode: 'development',
   entry: './src/componentes/index.jsx',
   output: {
-    filename: 'js/[name].bundle[contenthash:6].js',
+    filename: 'js/[name].bundle[hash:6].js',
     chunkFilename: 'js/[name][chunkhash:6].js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
@@ -113,12 +113,12 @@ module.exports = {
       favicon: __dirname + '/favicon.ico',
       template: __dirname + '/index.html'
     }),
-    new MiniCssExtractPlugin({
+    new MiniCssExtractPlugin({ // 分离 css
       filename: 'css/[name][contenthash:6].css',
       chunkFilename: 'css/[id][contenthash:6].css' // 供应商(vendor)样式文件
     }),
     new CleanWebpackPlugin(['dist']),
-    new CopyWebpackPlugin([
+    new CopyWebpackPlugin([ // 拷贝：原样输出
       {
         from: 'src/fonts/',
         to: 'fonts/[name].[ext]',
