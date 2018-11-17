@@ -37,6 +37,7 @@
   },
   "scripts": {
     "build-dev": "webpack --progress --config webpack.config.dev.js",
-    "server-dev": "webpack-dev-server --config webpack.config.dev.js"
+    "server-dev": "webpack-dev-server --config webpack.config.dev.js",
+    "server-middle": "node webpack.middle.server.js"
   }
 }
