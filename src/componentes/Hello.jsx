@@ -5,7 +5,8 @@ import dragonCat from '../images/dragonCat.jpg';
 
 class Hello extends Component {
   componentDidMount() {
-    // 测试 webpack-dev-middleware
+    // 测试 webpack-dev-middleware 时，去掉块注释
+  /* 
     // get
     Axios.get('/webpackMiddleware/abc')
     .then((res) => {
@@ -23,6 +24,7 @@ class Hello extends Component {
     .catch((err) => {
       console.log('Hello.jsx -> post -> fail: ', err);
     });
+  */
   }
   render() {
     return (
