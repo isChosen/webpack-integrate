@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import girl from '../images/girl.png';
 import avator from '../images/avatar.jpg';
 import greetingLess from '../less/greeting.less';
-import 'weui/dist/style/weui.css'; // vendor 样式
+import 'weui'; // vendor 样式
 
 class Greeting extends Component {
   handleBtnClick(ev) {
